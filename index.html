@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>دعوة زفاف إياد & رؤى</title>
+    <title>دعوة زفاف إياد &amp; رؤى</title>
 
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Google Fonts -->
@@ -13,10 +13,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;800;900&family=Great+Vibes&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 
-    <!-- Lucide Icons CDN -->
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Custom Palette Setup -->
+    <!-- Tailwind Custom Theme -->
     <script>
         tailwind.config = {
             theme: {
@@ -46,11 +46,11 @@
                     }
                 }
             }
-        }
+        };
     </script>
 
     <style>
-        *, ::before, ::after {
+        *, *::before, *::after {
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
@@ -89,7 +89,6 @@
             font-family: 'Great Vibes', cursive;
         }
 
-        /* Section Title Style */
         .section-title {
             font-family: 'Cairo', sans-serif !important;
             font-weight: 800;
@@ -98,7 +97,6 @@
             letter-spacing: 0.01em !important;
         }
 
-        /* Modern & Extended Naskh Typography Classes with Kashida (Non-bold for Quranic Verse) */
         .font-naskh-kashida {
             font-family: 'Amiri', serif;
             font-weight: 400;
@@ -110,7 +108,6 @@
             text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
         }
 
-        /* Custom Luxury Calligraphy Font for Main Welcome Verse */
         .luxury-script-text {
             font-family: 'Aref Ruqaa', serif;
             font-weight: 700;
@@ -119,18 +116,19 @@
             text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
         }
 
-        /* Video Cover Overlay Transition */
+        /* Cover Overlay Transition */
         #videoCover {
             transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
             will-change: opacity, visibility;
         }
+
         #videoCover.fade-out {
             opacity: 0;
             visibility: hidden;
             pointer-events: none !important;
         }
 
-        /* Sequential Fade-in Animations Triggered After Cover Dismissal */
+        /* Hero Reveal Animations */
         @keyframes heroFadeInUp {
             0% {
                 opacity: 0;
@@ -160,7 +158,7 @@
             animation: heroFadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 1.0s forwards;
         }
 
-        /* Smooth Top Fade for Clouds Section */
+        /* Clouds Top Fade */
         .clouds-fade-top {
             position: absolute;
             top: 0;
@@ -179,7 +177,7 @@
             z-index: 5;
         }
 
-        /* Scroll Reveal Animation Styles */
+        /* Scroll Reveal */
         .reveal {
             opacity: 0;
             transform: translateY(20px);
@@ -193,16 +191,19 @@
             will-change: auto;
         }
 
+        /* Countdown Circular Progress */
         .circle-container {
             position: relative;
             width: clamp(64px, 18vw, 76px);
             height: clamp(64px, 18vw, 76px);
         }
+
         .circle-bg {
             fill: none;
             stroke: #dcd6cd;
             stroke-width: 1.2;
         }
+
         .circle-progress {
             fill: none;
             stroke: #b89252;
@@ -213,21 +214,24 @@
             transition: stroke-dashoffset 0.8s ease;
         }
 
-        /* RSVP Custom Options Styles */
+        /* RSVP Radio Cards */
         .rsvp-card-option {
             transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
             background-color: rgba(247, 245, 240, 0.7);
             border: 1.5px solid #bdab93;
         }
+
         .rsvp-radio:checked + .rsvp-card-option {
             border-color: #6b5132;
             background-color: rgba(238, 232, 222, 0.95);
             box-shadow: 0 2px 8px rgba(107, 81, 50, 0.08);
         }
+
         .rsvp-radio:checked + .rsvp-card-option .radio-dot-inner {
             opacity: 1;
             transform: scale(1);
         }
+
         .rsvp-radio:checked + .rsvp-card-option .radio-dot-outer {
             border-color: #6b5132;
         }
@@ -241,11 +245,19 @@
         <source src="images/music.ogg" type="audio/ogg">
     </audio>
 
-    <!-- MUSIC ON/OFF BUTTON -->
+    <!-- MUSIC TOGGLE BUTTON -->
     <button id="musicToggle" type="button" aria-label="تشغيل / إيقاف الموسيقى" aria-pressed="false"
         style="position:fixed;top:max(14px,env(safe-area-inset-top));left:14px;z-index:40;width:42px;height:42px;border-radius:9999px;border:1px solid rgba(184,146,82,.5);background:rgba(243,239,230,.88);color:#6b5132;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;-webkit-tap-highlight-color:transparent;opacity:0;pointer-events:none;transition:opacity .5s ease;">
-        <svg id="musicIconOn" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
-        <svg id="musicIconOff" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+        <svg id="musicIconOn" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+        </svg>
+        <svg id="musicIconOff" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
     </button>
 
     <!-- FULLSCREEN COVER OVERLAY -->
@@ -257,15 +269,15 @@
         <button id="sealClickArea" type="button" aria-label="فتح الدعوة" class="absolute inset-0 z-20 w-full h-full cursor-pointer bg-transparent border-0 outline-none"></button>
     </div>
 
-    <!-- Mobile Screen Frame Container (Max Width 430px) -->
+    <!-- MOBILE FRAME CONTAINER -->
     <div class="w-full max-w-[430px] bg-[#eae3dc] sm:rounded-[40px] shadow-2xl overflow-hidden relative flex flex-col my-auto border-0 sm:border border-gold-200/50">
 
-        <!-- HERO FULLSCREEN BACKGROUND VIDEO SECTION -->
+        <!-- HERO SECTION -->
         <section id="heroSection" class="relative w-full h-[100dvh] min-h-[580px] sm:min-h-[720px] flex flex-col justify-between items-center text-center overflow-visible pb-6 px-6">
             <video autoplay loop muted playsinline webkit-playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none">
                 <source src="images/hero-bg.mp4" type="video/mp4">
             </video>
-            
+
             <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent via-80% to-[#eae3dc]/40 z-0 pointer-events-none"></div>
 
             <div class="relative z-10 w-full max-w-xs mx-auto pt-24 sm:pt-36 flex flex-col items-center space-y-4 sm:space-y-5">
@@ -299,27 +311,21 @@
 
         <!-- WELCOME SECTION -->
         <section id="welcomeSection" class="relative z-20 w-full min-h-[580px] sm:min-h-[640px] -mt-20 sm:mt-[-88px] pt-16 sm:pt-20 pb-16 px-6 flex flex-col justify-start items-center text-center overflow-visible reveal">
-            <!-- Background Image -->
             <img src="images/welcome-bg.png" alt="خلفية الترحيب" decoding="async" class="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none">
 
-            <!-- Content Container Layer -->
             <div class="relative z-10 max-w-sm mx-auto space-y-6 flex flex-col items-center justify-start pt-4">
-                
-                <!-- Main Invitation Verses -->
                 <div class="luxury-script-text text-xl sm:text-2xl space-y-2 leading-relaxed max-w-[340px] mx-auto">
                     <p>في ليلةٍ خَطّهــا القَدر بأجمَــل الألـوانِ،</p>
                     <p>تلتَقــي القُلــوبُ لِتَكتبَ بِدايَــة فَصـلٍ جَديد</p>
                     <p>مِلؤُه المَحبَة والأنــس، بِوجود مِن نُحـــبْ</p>
                 </div>
 
-                <!-- Highlighted Date -->
                 <div class="py-1">
                     <span class="luxury-script-text text-2xl sm:text-3xl tracking-widest dir-ltr inline-block">
                         15.01.2027
                     </span>
                 </div>
 
-                <!-- Reordered Welcome Verse with Kashida Support -->
                 <div class="space-y-4 pt-2">
                     <div class="font-naskh-kashida text-base sm:text-lg leading-loose max-w-[330px] mx-auto px-2 space-y-1 text-center">
                         <p>حِــيــنَ يَــتَــلَاقَــى الــزَّهْــرُ وَالــنُّــور،</p>
@@ -327,12 +333,10 @@
                         <p>لَــيْــلَــةٍ يَــعُــمُّــهَــا الــدِّفْــءُ وَالأُ نْــس</p>
                     </div>
 
-                    <!-- Divider Image -->
                     <div class="flex items-center justify-center pt-2">
                         <img src="images/divider.png" alt="فاصل زخرفي" decoding="async" class="w-36 h-auto object-contain opacity-85">
                     </div>
                 </div>
-
             </div>
         </section>
 
@@ -457,12 +461,12 @@
                 <div class="w-full my-2 flex items-center justify-center">
                     <div class="relative w-full max-w-[310px] aspect-square rounded-[32px] overflow-hidden shadow-md flex items-center justify-center bg-[#eae3dc]">
                         <div class="absolute inset-[3%] rounded-[28px] overflow-hidden">
-                            <iframe 
+                            <iframe
                                 title="خريطة موقع الحفل"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3384.2882828282828!2d35.88!3d31.98!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zThe%20Gardens%2C%20Amman!5e0!3m2!1sar!2sjo!4v1700000000000!5m2!1sar!2sjo" 
-                                class="w-full h-full border-0 grayscale-[20%] contrast-[105%]" 
-                                allowfullscreen="" 
-                                loading="eager" 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3384.2882828282828!2d35.88!3d31.98!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zThe%20Gardens%2C%20Amman!5e0!3m2!1sar!2sjo!4v1700000000000!5m2!1sar!2sjo"
+                                class="w-full h-full border-0 grayscale-[20%] contrast-[105%]"
+                                allowfullscreen=""
+                                loading="eager"
                                 referrerpolicy="no-referrer-when-downgrade">
                             </iframe>
                         </div>
@@ -482,19 +486,13 @@
             </div>
         </section>
 
-        <!-- GIFT PREFERENCE SECTION (Only 'بمحبة' Section Kept) -->
+        <!-- GIFT PREFERENCE SECTION -->
         <section id="dressCodeSection" class="py-16 px-6 bg-[#eae3dc] text-center relative overflow-hidden reveal z-10">
-            <!-- Background Image -->
             <img src="images/names-bg.png" alt="خلفية قسم بمحبة" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-100 pointer-events-none z-0">
-
-            <!-- Top Right Corner Flower -->
             <img src="images/dress-flower-tr.png" alt="ورود الزاوية العليا اليمنى" decoding="async" class="absolute top-0 -right-2 w-44 sm:w-52 h-auto object-contain pointer-events-none z-20 opacity-95">
-
-            <!-- Bottom Left Corner Flower -->
             <img src="images/dress-flower-bl.png" alt="ورود الزاوية السفلى اليسرى" decoding="async" class="absolute bottom-0 -left-2 w-44 sm:w-52 h-auto object-contain pointer-events-none z-20 opacity-95">
 
             <div class="relative z-10 max-w-[300px] mx-auto flex flex-col items-center py-4">
-                <!-- Gift Preference Block -->
                 <div class="space-y-3">
                     <h2 class="font-free-calligraphy text-2xl sm:text-3xl text-gold-700 font-bold tracking-wide">بمحبة</h2>
                     <p class="text-sm sm:text-base font-tajawal text-bronze/90 leading-relaxed">
@@ -515,7 +513,7 @@
                     <h2 class="section-title text-2xl sm:text-3xl text-rsvpDark tracking-tight">يرجى تأكيد الحضور</h2>
                 </div>
 
-                <form id="rsvpForm" class="space-y-4">
+                <form id="rsvpForm" class="space-y-4" novalidate>
                     <div class="space-y-1.5">
                         <div class="text-right space-y-0.5 pr-1">
                             <label for="guestName" class="text-sm font-bold text-rsvpDark block">الاسم الكامل</label>
@@ -524,9 +522,10 @@
                         <div class="relative flex items-center">
                             <input type="text" id="guestName" name="guestName" required placeholder="اسمك الكريم" class="w-full bg-[#f8f5ef]/90 border border-[#c4b39b] rounded-xl py-3 px-4 pl-10 text-right text-sm text-rsvpDark placeholder-[#a19079] focus:outline-none focus:border-rsvpDark transition shadow-sm">
                             <div class="absolute left-3.5 text-[#a19079] pointer-events-none">
-                                <i data-lucide="wallet" class="w-4 h-4"></i>
+                                <i data-lucide="user" class="w-4 h-4"></i>
                             </div>
                         </div>
+                        <p id="nameError" class="hidden text-xs text-red-700 font-medium pr-1">يرجى إدخال الاسم الكامل لتأكيد الرد.</p>
                     </div>
 
                     <div class="space-y-2 pt-1">
@@ -564,12 +563,12 @@
                         </div>
                     </div>
 
-                    <div class="space-y-1.5 pt-1">
+                    <div id="guestsWrapper" class="space-y-1.5 pt-1 transition-opacity duration-200">
                         <div class="text-right space-y-0.5 pr-1">
                             <span class="text-sm font-bold text-rsvpDark block">عدد المدعوين</span>
                             <p class="text-xs text-rsvpDark/70">المدعوين المشمولين</p>
                         </div>
-                        
+
                         <div class="flex items-center justify-between bg-[#f8f5ef]/90 border border-[#c4b39b] rounded-xl py-2 px-4 shadow-sm">
                             <button type="button" id="btnPlus" aria-label="زيادة العدد" class="w-9 h-9 flex items-center justify-center text-rsvpDark text-xl font-bold hover:bg-black/5 active:scale-95 rounded-lg transition">
                                 +
@@ -581,19 +580,20 @@
                         </div>
                     </div>
 
+                    <p id="submitError" class="hidden text-xs text-red-700 font-medium text-center">تعذر إرسال الرد حاليًا، يرجى المحاولة مرة أخرى.</p>
+
                     <div class="pt-3">
-                        <button type="submit" class="w-full bg-[#6b5132] hover:bg-[#584127] active:scale-[0.98] text-white py-3.5 px-6 rounded-xl font-bold text-sm tracking-wide transition duration-200 flex items-center justify-center gap-2 shadow-md">
-                            <span>تأكيد</span>
-                            <i data-lucide="send" class="w-4 h-4 transform rotate-[45deg]"></i>
+                        <button id="rsvpSubmitBtn" type="submit" class="w-full bg-[#6b5132] hover:bg-[#584127] active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed text-white py-3.5 px-6 rounded-xl font-bold text-sm tracking-wide transition duration-200 flex items-center justify-center gap-2 shadow-md">
+                            <span id="rsvpSubmitText">تأكيد</span>
+                            <i id="rsvpSubmitIcon" data-lucide="send" class="w-4 h-4 transform rotate-[45deg]"></i>
                         </button>
                     </div>
-
                 </form>
 
-                <div id="thankYouMessage" class="hidden text-center py-6 space-y-2 bg-[#f8f5ef]/90 border border-[#c4b39b] rounded-xl shadow-sm">
+                <div id="thankYouMessage" class="hidden text-center py-6 px-4 space-y-2 bg-[#f8f5ef]/90 border border-[#c4b39b] rounded-xl shadow-sm">
                     <i data-lucide="heart" class="w-7 h-7 text-rsvpDark mx-auto fill-rsvpDark"></i>
-                    <h3 class="text-base font-bold text-rsvpDark font-tajawal">تم استلام ردكم بنجاح!</h3>
-                    <p class="text-xs text-rsvpDark/80 font-tajawal">شكراً لكم، ننتظركم بشوق لنحتفل معاً.</p>
+                    <h3 id="thankYouTitle" class="text-base font-bold text-rsvpDark font-tajawal">تم استلام ردكم بنجاح!</h3>
+                    <p id="thankYouSub" class="text-xs text-rsvpDark/80 font-tajawal">شكراً لكم، ننتظركم بشوق لنحتفل معاً.</p>
                 </div>
             </div>
         </section>
@@ -616,26 +616,36 @@
 
     </div>
 
-    <!-- Optimized Scripts Block -->
+    <!-- APPLICATION SCRIPTS -->
     <script>
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby3UUhLTzWRSdS-kMEahS-WRKqPfYuYUCZEka2k_51U6zYa18arOZzwEXjqjkbIh9ub/exec';
+
         document.addEventListener('DOMContentLoaded', () => {
             if (window.lucide && typeof window.lucide.createIcons === 'function') {
                 window.lucide.createIcons();
             }
 
+            initCoverAndAudio();
+            initScrollReveal();
+            initCountdown();
+            initCalendarLink();
+            initRsvpForm();
+        });
+
+        function initCoverAndAudio() {
             const videoCover = document.getElementById('videoCover');
             const posterImage = document.getElementById('posterImage');
             const coverVideo = document.getElementById('coverVideo');
             const sealClickArea = document.getElementById('sealClickArea');
             const bgMusic = document.getElementById('bgMusic');
             const heroSection = document.getElementById('heroSection');
-
             const musicToggle = document.getElementById('musicToggle');
             const iconOn = document.getElementById('musicIconOn');
             const iconOff = document.getElementById('musicIconOff');
 
             let musicStarted = false;
             let userPaused = false;
+            let isInteractionHandled = false;
 
             function updateMusicButton() {
                 const playing = !!bgMusic && !bgMusic.paused;
@@ -648,10 +658,45 @@
                 if (!bgMusic || userPaused || !bgMusic.paused) return;
                 bgMusic.muted = false;
                 bgMusic.volume = 1;
-                const p = bgMusic.play();
-                if (p && typeof p.then === 'function') {
-                    p.then(() => { musicStarted = true; updateMusicButton(); })
-                     .catch(() => { updateMusicButton(); });
+                const playPromise = bgMusic.play();
+                if (playPromise && typeof playPromise.then === 'function') {
+                    playPromise
+                        .then(() => {
+                            musicStarted = true;
+                            updateMusicButton();
+                        })
+                        .catch(updateMusicButton);
+                }
+            }
+
+            function dismissCover() {
+                if (!videoCover || videoCover.classList.contains('fade-out')) return;
+                videoCover.classList.add('fade-out');
+                if (heroSection) heroSection.classList.add('hero-revealed');
+                if (musicToggle) {
+                    musicToggle.style.opacity = '1';
+                    musicToggle.style.pointerEvents = 'auto';
+                }
+                startMusic();
+            }
+
+            function handleUserInteraction() {
+                if (isInteractionHandled) return;
+                isInteractionHandled = true;
+                startMusic();
+
+                if (posterImage) posterImage.style.opacity = '0';
+
+                if (coverVideo) {
+                    coverVideo.muted = true;
+                    coverVideo.setAttribute('muted', '');
+                    coverVideo.classList.remove('hidden');
+                    const videoPromise = coverVideo.play();
+                    if (videoPromise !== undefined) {
+                        videoPromise.catch(dismissCover);
+                    }
+                } else {
+                    dismissCover();
                 }
             }
 
@@ -660,9 +705,12 @@
                 bgMusic.addEventListener('pause', () => {
                     updateMusicButton();
                     if (musicStarted && !userPaused && !document.hidden) {
-                        setTimeout(() => { if (bgMusic.paused && !userPaused) startMusic(); }, 400);
+                        setTimeout(() => {
+                            if (bgMusic.paused && !userPaused) startMusic();
+                        }, 400);
                     }
                 });
+
                 document.addEventListener('visibilitychange', () => {
                     if (document.hidden) {
                         if (!bgMusic.paused) bgMusic.pause();
@@ -693,47 +741,9 @@
                     document.removeEventListener('touchend', retryOnGesture, true);
                 }
             }
+
             document.addEventListener('click', retryOnGesture, true);
             document.addEventListener('touchend', retryOnGesture, true);
-
-            function triggerHeroSequence() {
-                if (heroSection) heroSection.classList.add('hero-revealed');
-            }
-
-            function dismissCover() {
-                if (videoCover && !videoCover.classList.contains('fade-out')) {
-                    videoCover.classList.add('fade-out');
-                    triggerHeroSequence();
-                    if (musicToggle) {
-                        musicToggle.style.opacity = '1';
-                        musicToggle.style.pointerEvents = 'auto';
-                    }
-                    startMusic();
-                }
-            }
-
-            let isInteractionHandled = false;
-
-            function handleUserInteraction() {
-                if (isInteractionHandled) return;
-                isInteractionHandled = true;
-
-                startMusic();
-
-                if (posterImage) posterImage.style.opacity = '0';
-
-                if (coverVideo) {
-                    coverVideo.muted = true;
-                    coverVideo.setAttribute('muted', '');
-                    coverVideo.classList.remove('hidden');
-                    const videoPromise = coverVideo.play();
-                    if (videoPromise !== undefined) {
-                        videoPromise.catch(dismissCover);
-                    }
-                } else {
-                    dismissCover();
-                }
-            }
 
             if (sealClickArea) {
                 sealClickArea.addEventListener('click', handleUserInteraction);
@@ -743,23 +753,28 @@
             if (coverVideo) {
                 coverVideo.addEventListener('ended', dismissCover);
             }
+        }
 
+        function initScrollReveal() {
             const revealElements = document.querySelectorAll('.reveal');
-            if ('IntersectionObserver' in window) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('active');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { rootMargin: '0px 0px -50px 0px', threshold: 0.05 });
-
-                revealElements.forEach(el => observer.observe(el));
-            } else {
+            if (!('IntersectionObserver' in window)) {
                 revealElements.forEach(el => el.classList.add('active'));
+                return;
             }
 
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -50px 0px', threshold: 0.05 });
+
+            revealElements.forEach(el => observer.observe(el));
+        }
+
+        function initCountdown() {
             const eventDate = new Date('January 15, 2027 16:00:00').getTime();
             const circumference = 226.19;
 
@@ -775,9 +790,21 @@
 
             let countdownInterval = null;
 
+            function setCircleProgress(circle, ratio) {
+                if (!circle) return;
+                const clamped = Math.max(0, Math.min(1, ratio));
+                circle.style.strokeDashoffset = circumference - clamped * circumference;
+            }
+
+            function stopCountdown() {
+                if (countdownInterval) {
+                    clearInterval(countdownInterval);
+                    countdownInterval = null;
+                }
+            }
+
             function updateCountdown() {
-                const now = Date.now();
-                const difference = eventDate - now;
+                const difference = eventDate - Date.now();
 
                 if (difference <= 0) {
                     if (daysEl) daysEl.innerText = '00';
@@ -785,10 +812,10 @@
                     if (minutesEl) minutesEl.innerText = '00';
                     if (secondsEl) secondsEl.innerText = '00';
 
-                    if (daysCircle) daysCircle.style.strokeDashoffset = circumference;
-                    if (hoursCircle) hoursCircle.style.strokeDashoffset = circumference;
-                    if (minutesCircle) minutesCircle.style.strokeDashoffset = circumference;
-                    if (secondsCircle) secondsCircle.style.strokeDashoffset = circumference;
+                    setCircleProgress(daysCircle, 0);
+                    setCircleProgress(hoursCircle, 0);
+                    setCircleProgress(minutesCircle, 0);
+                    setCircleProgress(secondsCircle, 0);
 
                     stopCountdown();
                     return;
@@ -804,23 +831,16 @@
                 if (minutesEl) minutesEl.innerText = String(minutes).padStart(2, '0');
                 if (secondsEl) secondsEl.innerText = String(seconds).padStart(2, '0');
 
-                if (daysCircle) daysCircle.style.strokeDashoffset = circumference - (Math.min(days, 30) / 30) * circumference;
-                if (hoursCircle) hoursCircle.style.strokeDashoffset = circumference - (hours / 24) * circumference;
-                if (minutesCircle) minutesCircle.style.strokeDashoffset = circumference - (minutes / 60) * circumference;
-                if (secondsCircle) secondsCircle.style.strokeDashoffset = circumference - (seconds / 60) * circumference;
+                setCircleProgress(daysCircle, Math.min(days, 30) / 30);
+                setCircleProgress(hoursCircle, hours / 24);
+                setCircleProgress(minutesCircle, minutes / 60);
+                setCircleProgress(secondsCircle, seconds / 60);
             }
 
             function startCountdown() {
                 if (!countdownInterval) {
                     updateCountdown();
                     countdownInterval = setInterval(updateCountdown, 1000);
-                }
-            }
-
-            function stopCountdown() {
-                if (countdownInterval) {
-                    clearInterval(countdownInterval);
-                    countdownInterval = null;
                 }
             }
 
@@ -835,46 +855,143 @@
             });
 
             window.addEventListener('beforeunload', stopCountdown);
+        }
 
+        function initCalendarLink() {
             const addToCalBtn = document.getElementById('addToCalendar');
-            if (addToCalBtn) {
-                const calTitle = encodeURIComponent("حفل زفاف إياد & رؤى");
-                const calDetails = encodeURIComponent("نتشرف بحضوركم حفل زفافنا في قاعات روز جولد - شارع الجاردنز، عمّان.");
-                const calLocation = encodeURIComponent("Rose Gold Halls, Gardens Street, Amman, Jordan");
-                addToCalBtn.href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${calTitle}&dates=20270115T140000Z/20270115T170000Z&details=${calDetails}&location=${calLocation}`;
-            }
+            if (!addToCalBtn) return;
 
-            let currentGuestsCount = 2;
+            const calTitle = encodeURIComponent('حفل زفاف إياد & رؤى');
+            const calDetails = encodeURIComponent('نتشرف بحضوركم حفل زفافنا في قاعات روز جولد - شارع الجاردنز، عمّان.');
+            const calLocation = encodeURIComponent('Rose Gold Halls, Gardens Street, Amman, Jordan');
+            addToCalBtn.href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${calTitle}&dates=20270115T140000Z/20270115T170000Z&details=${calDetails}&location=${calLocation}`;
+        }
+
+        function initRsvpForm() {
+            const rsvpForm = document.getElementById('rsvpForm');
+            if (!rsvpForm) return;
+
+            const guestNameInput = document.getElementById('guestName');
+            const nameError = document.getElementById('nameError');
+            const submitError = document.getElementById('submitError');
+            const guestsWrapper = document.getElementById('guestsWrapper');
             const guestsDisplay = document.getElementById('guestsDisplay');
             const btnPlus = document.getElementById('btnPlus');
             const btnMinus = document.getElementById('btnMinus');
+            const submitBtn = document.getElementById('rsvpSubmitBtn');
+            const submitText = document.getElementById('rsvpSubmitText');
+            const thankYouMsg = document.getElementById('thankYouMessage');
+            const thankYouTitle = document.getElementById('thankYouTitle');
+            const thankYouSub = document.getElementById('thankYouSub');
+            const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
 
-            if (btnPlus && btnMinus && guestsDisplay) {
+            let currentGuestsCount = 2;
+            let isSubmitting = false;
+
+            function syncGuestsUI() {
+                const selectedAttendance = document.querySelector('input[name="attendance"]:checked')?.value || 'حضور';
+                const isDeclining = selectedAttendance === 'اعتذار';
+
+                if (guestsWrapper) {
+                    guestsWrapper.classList.toggle('opacity-40', isDeclining);
+                    guestsWrapper.classList.toggle('pointer-events-none', isDeclining);
+                }
+                if (btnPlus) btnPlus.disabled = isDeclining;
+                if (btnMinus) btnMinus.disabled = isDeclining;
+                if (guestsDisplay) {
+                    guestsDisplay.innerText = isDeclining ? '00' : String(currentGuestsCount).padStart(2, '0');
+                }
+            }
+
+            if (btnPlus) {
                 btnPlus.addEventListener('click', () => {
                     if (currentGuestsCount < 10) {
                         currentGuestsCount++;
-                        guestsDisplay.innerText = String(currentGuestsCount).padStart(2, '0');
+                        syncGuestsUI();
                     }
                 });
+            }
 
+            if (btnMinus) {
                 btnMinus.addEventListener('click', () => {
                     if (currentGuestsCount > 1) {
                         currentGuestsCount--;
-                        guestsDisplay.innerText = String(currentGuestsCount).padStart(2, '0');
+                        syncGuestsUI();
                     }
                 });
             }
 
-            const rsvpForm = document.getElementById('rsvpForm');
-            if (rsvpForm) {
-                rsvpForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    this.classList.add('hidden');
-                    const thankYouMsg = document.getElementById('thankYouMessage');
-                    if (thankYouMsg) thankYouMsg.classList.remove('hidden');
+            attendanceRadios.forEach(radio => {
+                radio.addEventListener('change', syncGuestsUI);
+            });
+
+            if (guestNameInput) {
+                guestNameInput.addEventListener('input', () => {
+                    if (nameError) nameError.classList.add('hidden');
+                    if (submitError) submitError.classList.add('hidden');
                 });
             }
-        });
+
+            syncGuestsUI();
+
+            rsvpForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                if (isSubmitting) return;
+
+                const guestName = guestNameInput ? guestNameInput.value.trim() : '';
+                const attendance = document.querySelector('input[name="attendance"]:checked')?.value || 'حضور';
+                const guestsCount = attendance === 'اعتذار' ? 0 : currentGuestsCount;
+
+                if (!guestName) {
+                    if (nameError) nameError.classList.remove('hidden');
+                    if (guestNameInput) guestNameInput.focus();
+                    return;
+                }
+
+                isSubmitting = true;
+                if (submitBtn) submitBtn.disabled = true;
+                if (submitText) submitText.innerText = 'جاري التأكيد...';
+                if (submitError) submitError.classList.add('hidden');
+
+                const payload = {
+                    guestName,
+                    attendance,
+                    guestsCount,
+                    source: navigator.userAgent.slice(0, 80)
+                };
+
+                try {
+                    await fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    rsvpForm.classList.add('hidden');
+                    if (thankYouTitle) {
+                        thankYouTitle.innerText = `شكراً لك يا ${guestName}، تم تسجيل ردك!`;
+                    }
+                    if (thankYouSub) {
+                        thankYouSub.innerText = attendance === 'حضور'
+                            ? `بانتظاركم بكل حب (${String(guestsCount).padStart(2, '0')} مدعوين).`
+                            : 'نقدّر تواصلكم ومشاعركم اللطيفة، ونتمنى لكم دوام الخير.';
+                    }
+                    if (thankYouMsg) thankYouMsg.classList.remove('hidden');
+                } catch (err) {
+                    isSubmitting = false;
+                    if (submitBtn) submitBtn.disabled = false;
+                    if (submitText) submitText.innerText = 'تأكيد';
+                    if (submitError) {
+                        submitError.innerText = 'تعذر إرسال الرد حاليًا، تحقق من الاتصال وحاول مرة أخرى.';
+                        submitError.classList.remove('hidden');
+                    }
+                }
+            });
+        }
     </script>
 </body>
 </html>
+```[cite: 1]
+
+الملف جاهز للرفع والنشر مباشرة؛ هل تود إضافة أي تفاصيل أخرى أو تعديل أي عنصر في الدعوة قبل النشر؟
